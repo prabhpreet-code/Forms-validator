@@ -1,0 +1,14 @@
+Documentation 
+
+Libraries Used:- 
+-> ReactJS: A JavaScript library for building user interfaces.
+-> TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
+-> Chakra-UI: A simple, modular, and accessible component library that provides building blocks to build React applications.
+-> chakra-react-select: An extension of the react-select library with Chakra-UI styling.
+-> Vite: A build tool that creates a development environment with fast refresh and optimized builds.
+
+File Structure:-
+
+- src folder containing main application files
+- assets folder for static files
+- components folder housing Result.tsx , RegistrationForm.tsx & common folder
