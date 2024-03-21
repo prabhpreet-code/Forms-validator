@@ -34,30 +34,23 @@ export default function RegistrationForm({ onSubmit }: RegistrationFormProps) {
     option: (provided: any) => ({
       ...provided,
       color: "black",
-      backgroundColor: "white", // your color here
+      backgroundColor: "white",
     }),
   };
 
   // For implementing green tick functionality in chakra-react-select
-  const submitButtonRef = useRef();
-  const CustomOption = forwardRef<HTMLDivElement, Option>(
-    ({ children, ...props }, ref) => {
-      const isSelected = !!props.isSelected;
-      return (
-        <chakraComponents.Option {...props}>
-          <Flex
-            ref={ref}
-            align="center"
-            justifyContent="space-evenly"
-            {...props}
-          >
-            <Text mr={3}>{children}</Text>
-            {isSelected && <CheckIcon color="green.500" />}
-          </Flex>
-        </chakraComponents.Option>
-      );
-    }
-  );
+  const submitButtonRef: any = useRef();
+  const CustomOption: any = forwardRef(({ children, ...props }: any, ref) => {
+    const isSelected = !!props.isSelected;
+    return (
+      <chakraComponents.Option {...props}>
+        <Flex ref={ref} align="center" justifyContent="space-evenly" {...props}>
+          <Text mr={3}>{children}</Text>
+          {isSelected && <CheckIcon color="green.500" />}
+        </Flex>
+      </chakraComponents.Option>
+    );
+  });
   useImperativeHandle(submitButtonRef, () => ({
     click() {
       if (submitButtonRef.current) {
@@ -178,7 +171,7 @@ export default function RegistrationForm({ onSubmit }: RegistrationFormProps) {
               control={control}
               name="gender"
               rules={{ required: "Please enter the gender" }}
-              render={({ field: { onChange, value, name, ref } }) => (
+              render={({ field: { onChange, value } }) => (
                 <VStack width="300px">
                   <FormControl py={4} id="gender">
                     <FormLabel fontWeight="bold" fontSize="lg">
@@ -189,7 +182,6 @@ export default function RegistrationForm({ onSubmit }: RegistrationFormProps) {
                         className={"react-select"}
                         classNamePrefix={"react-select"}
                         chakraStyles={chakraStyles}
-                        inputRef={ref}
                         value={value}
                         options={genderOptions}
                         placeholder="Choose Gender"
@@ -226,7 +218,7 @@ export default function RegistrationForm({ onSubmit }: RegistrationFormProps) {
               </Flex>
 
               <Stack spacing={3}>
-                {fields.map((item, index) => (
+                {fields.map((item: any, index: any) => (
                   <Box key={item.id} display="flex" alignItems="center">
                     <Controller
                       name={`techStacks[${index}].value`}
